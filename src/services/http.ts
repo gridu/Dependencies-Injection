@@ -1,9 +1,13 @@
 import { Logger } from './logger';
 
 import type { ApiConfig } from '../types';
+
+
 export class HTTP {
   logger: Logger;
   apiConfig: ApiConfig;
+
+  static $inject = ['apiConfig', 'logger'];
 
   constructor(apiConfig: ApiConfig) {
     this.apiConfig = apiConfig;
