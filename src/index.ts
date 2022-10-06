@@ -1,5 +1,5 @@
 import { iocContainer } from './ioc';
-import type { User } from './types';
+import { User } from './types';
 
 
 const renderUsers = async () => {
