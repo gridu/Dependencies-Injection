@@ -1,7 +1,6 @@
-import { Users } from './services/users';
-import { Logger, ILogger } from './services/logger';
+import { Logger } from './services/logger';
 import { createIoCContainer } from './ioc/index';
-import type { User, IApiConfig } from './types';
+import type { User } from './types';
 
 const ioc = createIoCContainer();
 

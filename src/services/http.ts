@@ -1,6 +1,6 @@
 import { ILogger } from './logger';
 
-import type { IApiConfig } from '../types';
+import type { IApiConfig, User } from '../types';
 
 export interface IHTTP {
   get (url: string): void
