@@ -3,7 +3,7 @@ export interface User {
   name: string;
 }
 
-export interface ApiConfig {
+export interface IApiConfig {
   path: string;
   resources: { [key: string]: string };
 }
