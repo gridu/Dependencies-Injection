@@ -1,12 +1,12 @@
-import { HTTP } from './http';
-
-import type { ApiConfig, User } from '../types';
+import type { ApiConfig, User, IHttp } from '../types';
 export class Users {
-  http: HTTP;
   apiConfig: ApiConfig;
+  http: IHttp;
 
-  constructor(apiConfig: ApiConfig) {
-    this.http = new HTTP(apiConfig);
+  static $inject = ['apiConfig', 'http'];
+
+  constructor(apiConfig: ApiConfig, http: IHttp) {
+    this.http = http;
     this.apiConfig = apiConfig;
   }
 
