@@ -9,7 +9,7 @@ export const createIoCContainer = () =>  {
   
   ioc.registerClass('logger', Logger);
   ioc.registerClass('http', HTTP);
-  ioc.registerClass('users', Users)
+  ioc.registerClass('users', Users);
 
   return ioc;
 };
