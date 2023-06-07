@@ -19,15 +19,15 @@ const renderUsers = async () => {
 };
 
 const app = () => {
+  const config = (window as any).__CONFIG__;
+  ioc.register('apiConfig', config.api);
   delete (window as any).__CONFIG__;
-
+  
   renderUsers();
 };
 
 window.onload = (event: Event) => {
   const logger = ioc.resolve('logger');
-  const config = (window as any).__CONFIG__;
-  ioc.register('apiConfig', config.api);
 
   logger.info('Page is loaded.');
 
