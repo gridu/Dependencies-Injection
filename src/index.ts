@@ -1,19 +1,19 @@
-import { Users } from "./services/users";
-import { Logger } from "./services/logger";
+import { Users } from './services/users';
+import { Logger } from './services/logger';
 
-import type { User } from "./types";
-import { createIoCContainer } from "./ioc";
+import type { User } from './types';
+import { createIoCContainer } from './ioc';
 
 const renderUsers = async () => {
   // Resolve resources
-  const usersService = createIoCContainer().resolve("users");
+  const usersService = createIoCContainer().resolve('users');
 
   const users = await usersService.getUsers();
 
-  const listNode = document.getElementById("users-list");
+  const listNode = document.getElementById('users-list');
 
   users.forEach((user: User) => {
-    const listItemNode = document.createElement("li");
+    const listItemNode = document.createElement('li');
 
     listItemNode.innerHTML = user.name;
     listNode.appendChild(listItemNode);
@@ -29,9 +29,9 @@ const app = () => {
 };
 
 window.onload = () => {
-  const logger = createIoCContainer().resolve("logger");
+  const logger = createIoCContainer().resolve('logger');
 
-  logger.info("Page is loaded.");
+  logger.info('Page is loaded.');
 
   app();
 };
