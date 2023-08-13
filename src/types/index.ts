@@ -1,6 +1,6 @@
-import { HTTP } from "src/services/http";
-import { Logger } from "src/services/logger";
-import { Users } from "src/services/users";
+import { HTTP } from 'src/services/http';
+import { Logger } from 'src/services/logger';
+import { Users } from 'src/services/users';
 
 export interface User {
   id: number;

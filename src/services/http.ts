@@ -1,11 +1,11 @@
-import { Logger } from "./logger";
+import { Logger } from './logger';
 
-import type { ApiConfig } from "../types";
+import type { ApiConfig } from '../types';
 export class HTTP {
   logger: Logger;
   apiConfig: ApiConfig;
 
-  static $inject = ["apiConfig", "logger"];
+  static $inject = ['apiConfig', 'logger'];
 
   constructor(apiConfig: ApiConfig, logger: Logger) {
     this.apiConfig = apiConfig;
