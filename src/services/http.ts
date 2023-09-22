@@ -5,7 +5,7 @@ export class HTTP {
   logger: Logger;
   apiConfig: ApiConfig;
   // define which resources should be injected
-  static $inject = ["logger", "config"];
+  static $inject = ["config", "logger"];
 
   constructor(apiConfig: ApiConfig, logger: Logger) {
     this.apiConfig = apiConfig;
