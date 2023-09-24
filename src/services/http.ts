@@ -1,13 +1,13 @@
 import { Logger } from "./logger";
-
 import type { ApiConfig } from "../types";
+
 export class HTTP {
   logger: Logger;
   apiConfig: ApiConfig;
-  // define which resources should be injected
-  static $inject = ["logger"];
 
-  constructor(apiConfig: ApiConfig, logger: Logger) {
+  static $inject = ["logger", "apiConfig"];
+
+  constructor(logger: Logger, apiConfig: ApiConfig) {
     this.apiConfig = apiConfig;
     this.logger = logger;
   }
