@@ -5,9 +5,11 @@ export class HTTP {
   logger: Logger;
   apiConfig: ApiConfig;
 
-  constructor(apiConfig: ApiConfig) {
+  static $inject = ['logger', 'config'];
+
+  constructor(logger: Logger, apiConfig: ApiConfig) {
     this.apiConfig = apiConfig;
-    this.logger = new Logger();
+    this.logger = logger;
   }
 
   async get(url: string) {
