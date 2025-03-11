@@ -1,13 +1,15 @@
-import { Logger } from './logger';
-
+import type { ILogger } from './logger';
 import type { ApiConfig } from '../types';
-export class HTTP {
-  logger: Logger;
-  apiConfig: ApiConfig;
 
-  constructor(apiConfig: ApiConfig) {
+export class HTTP {
+  apiConfig: ApiConfig;
+  logger: ILogger;
+
+  static $inject = ['apiConfig', 'logger'];
+
+  constructor(apiConfig: ApiConfig, logger: ILogger) {
     this.apiConfig = apiConfig;
-    this.logger = new Logger();
+    this.logger = logger;
   }
 
   async get(url: string) {
