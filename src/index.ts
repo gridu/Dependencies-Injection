@@ -1,10 +1,14 @@
-import { Users } from './services/users';
 import { Logger } from './services/logger';
 
 import type { User, ApiConfig } from './types';
+import { container } from './ioc';
 
 const renderUsers = async (config: ApiConfig) => {
-  const usersService = new Users(config);
+  container.register('apiConfig', config);
+  container.resolve('http');
+  container.resolve('logger');
+
+  const usersService = container.resolve('users');
   const users = await usersService.getUsers();
 
   const listNode = document.getElementById('users-list');
