@@ -1,12 +1,19 @@
 import IoCContainer from 'ioc-lite';
 
-// import { Logger } from '../services/logger';
-// import { HTTP } from '../services/http';
-// import { Users } from '../services/users';
+import { Logger } from '../services/logger';
+import { HTTP } from '../services/http';
+import { Users } from '../services/users';
 
-export const createIoCContainer = () =>  {
+import type { ApiConfig } from '../types';
+
+export const createIoCContainer = (config: ApiConfig) => {
   const ioc = new IoCContainer();
-  // you can register some resources right now below...
+
+  ioc.register('ApiConfig', config);
+
+  ioc.registerClass('Logger', Logger);
+  ioc.registerClass('HTTP', HTTP);
+  ioc.registerClass('Users', Users);
 
   return ioc;
 };
