@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "clean": "rm -rf ./dist && mkdir dist",
+    "clean": "rd /S /Q dist && mkdir dist", 
     "build:client": "webpack",
     "build:server": "tsc --build tsconfig.es5.json",
     "dev:server": "yarn clean && yarn build:server && nodemon --watch dist dist/server/index.js",
@@ -15,7 +15,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.1",
-    "ioc-lite": "^1.2.1"
+    "ioc-lite": "^1.2.3"
   },
   "devDependencies": {
     "@types/express": "^4.17.13",
