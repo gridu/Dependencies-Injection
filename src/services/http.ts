@@ -1,16 +1,10 @@
 import { Logger } from './logger';
-
 import type { ApiConfig } from '../types';
-export class HTTP {
-  logger: Logger;
-  apiConfig: ApiConfig;
 
+export class HTTP {
   static $inject: string[] = ['logger', 'config'];
 
-  constructor(logger: Logger, apiConfig: ApiConfig) {
-    this.logger = logger;
-    this.apiConfig = apiConfig;
-  }
+  constructor(private logger: Logger, private apiConfig: ApiConfig) {}
 
   async get(url: string) {
     const response = await fetch(`${this.apiConfig.path}${url}`);

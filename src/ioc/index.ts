@@ -12,10 +12,8 @@ type IoCResources = {
   config: ApiConfig;
 }
 
-export const createIoCContainer = (config: ApiConfig) =>  {
+export const createIoCContainer = () =>  {
   const ioc = new IoCContainer<IoCResources>();
-  
-  ioc.register('config', config);
   
   ioc.registerClass('logger', Logger);
   ioc.registerClass('http', HTTP);
@@ -23,3 +21,4 @@ export const createIoCContainer = (config: ApiConfig) =>  {
 
   return ioc;
 };
+

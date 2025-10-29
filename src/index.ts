@@ -1,11 +1,11 @@
 import { createIoCContainer } from './ioc';
-
 import type { User } from './types';
 
-const renderUsers = async (ioc: any) => {
-  const usersService = ioc.resolve('users');
-  const users = await usersService.getUsers();
+const ioc = createIoCContainer();
 
+const renderUsers = async () => {
+  const usersService = ioc.resolve('users');
+  const users = usersService.getUsers();
   const listNode = document.getElementById('users-list');
 
   users.forEach((user: User) => {
@@ -16,18 +16,12 @@ const renderUsers = async (ioc: any) => {
   });
 };
 
-const app = () => {
-  const config = (window as any).__CONFIG__;
-  delete (window as any).__CONFIG__;
+const app = () => renderUsers();
 
-  const ioc = createIoCContainer(config.api);
-  renderUsers(ioc);
-};
-
-window.onload = (event: Event) => {
+window.onload = () => {
   const config = (window as any).__CONFIG__;
-  const ioc = createIoCContainer(config.api);
-  
+  ioc.register('config', config.api);
+
   const logger = ioc.resolve('logger');
   logger.info('Page is loaded.');
 
