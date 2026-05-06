@@ -3,11 +3,9 @@
     "port": 8080
   },
   "common": {
-    "api": {
-      "path": "/api",
-      "resources": {
-        "users": "/users"
-      }
+    "path": "/api",
+    "resources": {
+      "users": "/users"
     }
   }
 }
