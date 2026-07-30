@@ -1,12 +1,8 @@
-import { Users } from './services/users';
-import { Logger } from './services/logger';
+import { createIoCContainer } from './ioc';
 
-import type { User, ApiConfig } from './types';
+import type { User } from './types';
 
-const renderUsers = async (config: ApiConfig) => {
-  const usersService = new Users(config);
-  const users = await usersService.getUsers();
-
+const renderUsers = (users: User[]) => {
   const listNode = document.getElementById('users-list');
 
   users.forEach((user: User) => {
@@ -17,17 +13,23 @@ const renderUsers = async (config: ApiConfig) => {
   });
 };
 
-const app = () => {
+const app = async (ioc: ReturnType<typeof createIoCContainer>) => {
   const config = (window as any).__CONFIG__;
   delete (window as any).__CONFIG__;
 
-  renderUsers(config.api);
+  ioc.register('config', config.api);
+
+  const usersService = ioc.resolve('users');
+  const users = await usersService.getUsers();
+
+  renderUsers(users);
 };
 
 window.onload = (event: Event) => {
-  const logger = new Logger();
+  const ioc = createIoCContainer();
+  const logger = ioc.resolve('logger');
 
   logger.info('Page is loaded.');
 
-  app();
+  app(ioc);
 };
